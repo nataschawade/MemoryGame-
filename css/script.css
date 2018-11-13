@@ -1,0 +1,67 @@
+.body { 
+    padding: 100px; 
+    background-image: url("../images/background.jpg"); 
+    color: #fafafa;
+}
+
+.text-align { 
+    text-align: center;
+}
+
+#quiz { 
+    background-color:#580000 ;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.round-border {
+    border-radius: 5px;
+    border:none;
+    padding:5px;
+}
+
+#picture {
+    width: 500px;
+    border-radius:10px;
+}
+
+#button {
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top:60px;
+  }
+  
+#button:hover {
+    opacity: 1;
+    cursor: pointer; 
+}
+
+ .color-button {
+    border: 0px;
+    width: 200px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+#after-submit {
+    visibility:hidden; 
+    padding: 10px 20px 10px 20px;
+    position: absolute; 
+    top: 10px;
+    width: 80%;
+    font-size: 40px;
+}
+
+#message {
+    padding-bottom: 0px;
+}
