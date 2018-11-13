@@ -5,6 +5,7 @@
     <title>Hello</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Kumar+One+Outline" rel="stylesheet">
     <link rel="stylesheet" href="./css/script.css">
 
 </head>
@@ -28,7 +29,7 @@
         margin: auto;
         display: flex;
         flex-wrap: wrap;
-        margin-top: 150px;
+        margin-top: 50px;
     }
 
     .memory-card {
@@ -48,22 +49,22 @@
         object-fit: cover;
     }
 
-    /* .front-face,
-.back-face {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  position: absolute;
-  border-radius: 5px;
-  background: #1C7CCC;
-}  */
+    #title{
+        text-align:center;
+        color: white;
+        font-size: 50px;
+        margin-top: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        position:relative;
+        font-family: 'VT323', monospace;
+    }
 
 #newGame {
     border:black 1px solid;
     color:black;
     position: absolute;
-    right: 40px;
-    top: 40px;
+    right: 100px;
+    top: 180px;
     height: 60px;
     width: 100px;
     border-style: dotted;
@@ -83,17 +84,19 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 20% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
     text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 50px;
 }
 
 /* The Close Button */
@@ -115,6 +118,7 @@
 
 <body>
     <div id="container">
+        <div id="title"> THE ITC MEMORY GAME </div>
         <button type=butotn id="newGame"> New Game </button>
 
         <section id="memory-game">
@@ -137,7 +141,7 @@
         <!-- The Modal -->
         <div id="myModal" class="modal">
             <!-- Modal content -->
-            <div class="modal-content">
+            <div class="modal-content" id="modalContent">
                 <div id="modalText"></div>
                 <span class="close">&times;</span>
 
