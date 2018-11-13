@@ -19,7 +19,7 @@
     body {
         /* height: 100vh; */
         display: flex;
-        background: #060AB2;
+        background-image: url('./images/background2.png');
     }
 
     #memory-game {
@@ -37,9 +37,10 @@
         margin: 5px;
         position: relative;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-        background-image: url('./images/image3.jpg');
+        background-image: url('./images/itc.png');
         background-size: cover;
         background-repeat: no-repeat;
+        cursor: pointer; 
     }
 
     div {
@@ -59,16 +60,62 @@
 
 #newGame {
     border:black 1px solid;
-    border-style: dotted;
     color:black;
     position: absolute;
+    right: 40px;
+    top: 40px;
+    height: 60px;
+    width: 100px;
+    border-style: dotted;
+    background-color: rgba(255,255,255,0.8);
+    cursor: pointer; 
     
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    text-align: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 </style>
 
 <body>
     <div id="container">
-<button type=butotn id="newGame"> New Game </button>
+        <button type=butotn id="newGame"> New Game </button>
 
         <section id="memory-game">
             <div class="memory-card"></div>
@@ -86,6 +133,19 @@
             <div class="memory-card"></div>
             <div class="memory-card"> </div>
         </section>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div id="modalText"></div>
+                <span class="close">&times;</span>
+
+            </div>
+
+        </div>
+
+
 
     </div>
 </body>
