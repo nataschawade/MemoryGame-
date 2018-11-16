@@ -33,13 +33,18 @@ var array = ["url('./images/cynthia.png')",
     "url('./images/rebecca.png')",
     "url('./images/emilie.png')",
 ];
-let firstCard, secondCard;
+var cardId;
+var firstCard;
+var secondCard;
 let hasFlippedCard = false;
 function assignCards(event) {
-    if (event.target === firstCard) return;
+
     if (event.target !== event.currentTarget) {
         //when clicked
-        var cardId = event.target.getAttribute('id');
+        info.clickNumber++;
+        if (event.target === firstCard) return;
+
+        cardId = event.target.getAttribute('id');
         cardId = parseInt(cardId);
 
         event.target.style.backgroundImage = array[cardId];
@@ -49,24 +54,29 @@ function assignCards(event) {
 
         info.clickedItem.push(array[cardId]);
 
+        if (info.clickNumber == 1) {
+            event.target = firstCard;
+            info.div.push(event.target);
+        }
+        if (info.clickNumber == 2) {
+            event.target = secondCard;
+            info.div.push(event.target);
+            decisionMaker();
+        }
 
-        info.clickNumber++;
-        firstCard = event.target;
         // if (!hasFlippedCard) {
         //     hasFlippedCard = true;
         //     firstCard = event.target;
-        info.div.push(event.target);
+
 
         //     return;
         // }
 
     }
-    if (info.clickNumber == 2) {
-        decisionMaker();
-        secondCard = event.target;
-        info.div.push(firstCard);
+    // if (info.clickNumber == 2) {
+    //     decisionMaker();
 
-    }
+    // }
     event.stopPropagation();
     //    event.target = secondCard;
 };
@@ -116,23 +126,23 @@ function newGameFunction() {
 // winner
 function win() {
     setTimeout(function () {
-    if (info.correct == 1) {
-        modalText.innerHTML = "WIN ! <br> You had " + info.incorrect + " incorrect guesses. <br> ";
-        modal.style.display = "block";
-        modalContent.style.backgroundColor = "green";
+        if (info.correct == 2) {
+            modalText.innerHTML = "WIN ! <br> You had " + info.incorrect + " incorrect guesses. <br> ";
+            modal.style.display = "block";
+            modalContent.style.backgroundColor = "green";
 
-        var modalNewGame = document.getElementById("modalNewGame");
-        modalNewGame.onclick = function () {
-            modal.style.display = "none";
-            newGameFunction()
-        };
+            var modalNewGame = document.getElementById("modalNewGame");
+            modalNewGame.onclick = function () {
+                modal.style.display = "none";
+                newGameFunction()
+            };
 
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function () {
-            modal.style.display = "none";
-        };
-    }
-}, 2000);
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
+        }
+    }, 2000);
 }
 
 
