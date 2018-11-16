@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Kumar+One+Outline" rel="stylesheet">
-    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
   
 </head>
 
@@ -42,10 +42,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         cursor: pointer; 
-        transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     }
 
     div {
@@ -118,13 +114,6 @@
     cursor: pointer;
 }
 
-.flipTransition {
-    transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-}
-
 </style>
 
 <body>
@@ -133,20 +122,20 @@
         <button type=butotn id="newGame"> New Game </button>
 
         <section id="memory-game">
-            <div id ="0" class="memory-card"></div>
-            <div id= "1" class="memory-card"></div>
-            <div id="2" class="memory-card"></div>
-            <div id="3" class="memory-card"> </div>
+            <div class="memory-card one"></div>
+            <div class="memory-card two"></div>
+            <div class="memory-card three"></div>
+            <div class="memory-card four"> </div>
 
-            <div id="4" class="memory-card"></div>
-            <div id="5" class="memory-card"></div>
-            <div id="6" class="memory-card"></div>
-            <div id="7" class="memory-card"> </div>
+            <div class="memory-card"></div>
+            <div class="memory-card"></div>
+            <div class="memory-card"></div>
+            <div class="memory-card"> </div>
 
-            <div id="8" class="memory-card"></div>
-            <div id="9" class="memory-card"></div>
-            <div id="10" class="memory-card"></div>
-            <div id="11" class="memory-card"> </div>
+            <div class="memory-card"></div>
+            <div class="memory-card"></div>
+            <div class="memory-card"></div>
+            <div class="memory-card"> </div>
         </section>
 
         <!-- The Modal -->
@@ -164,6 +153,6 @@
 
     </div>
 </body>
-<script src="./js/script.js"></script>
+<script src="./js/scriptcopy.js"></script>
 
 </html>

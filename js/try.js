@@ -12,7 +12,8 @@ newGame.addEventListener("click", shuffle);
 
 //SELECTING A CARD 
 info = {
-    clickedItem: [],
+    clickedItem: [null, null],
+    urlItem : ["" , ""],
     clickNumber: 0,
     correct: 0,
     incorrect: 0
@@ -41,33 +42,42 @@ function assignCards(event) {
 
         event.target.style.transition = "all 1.0s  ";
         event.target.style.transform = "rotateY(180deg)";
-
-        info.clickedItem.push(array[cardId]);
-        info.clickNumber++;
-
-        if (info.clickNumber == 2 ) {
-            decisionMaker();
+        if (info.clickedItem[0] == null){
+            info.clickedItem[0] = event.target;
+            info.urlItem[0] = array[cardId];
         }
+        else if (info.clickedItem[1] == null){
+            if (event.target == info.clickedItem[0]){
+
+            }
+            else{
+                info.clickedItem[1] = event.target
+                info.urlItem[1] = array[cardId];
+                decisionMaker();
+            
+                // set timer.
+            }
+            
+        }
+    
     }
-    e.stopPropagation();
+    event.stopPropagation();
 };
 
 //MATCH OR NO MATCH
 function decisionMaker() {
-    setTimeout(function () {
-        if (info.clickedItem[0] === info.clickedItem[1]) {
+    
+        if (info.urlItem[0] === info.urlItem[1]) {
             correctAnswer();
         }
 
         else {
             incorrectAnswer();
-        };
-
+        };        
         //continue game
-        info.clickNumber = 0;
-        info.clickedItem = [];
+        info.clickedItem = [null, null];
+        info.urlItem = [null, null];
 
-    }, 1000);
 }
 
 // CORRECT ANSWER
@@ -90,6 +100,12 @@ function correctAnswer() {
 
 //INCORRECT ANSWER
 function incorrectAnswer() {
+    console.log(info.clickedItem);
+    setTimeout(function () {
+    info.clickedItem[0].style.backgroundImage = "url('./images/itc.png')";
+    info.clickedItem[1].style.backgroundImage = "url('./images/itc.png')";
+}, 1000);
+    
     //MODAL  START
     // modalText.innerHTML = "NO MATCH!";
     // modal.style.display = "block";
@@ -100,13 +116,13 @@ function incorrectAnswer() {
     //     modal.style.display = "none";
     // }
 
-    setTimeout(function () {
-        for (var i = 0; i < memoryCard.length; i++) {
-            memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
-            memoryCard[i].transition = "all 1.0s  ";
-            memoryCard[i].transform = "rotateY(180deg)";
-        }
-    }, 1000);
+    // setTimeout(function () {
+    //     for (var i = 0; i < memoryCard.length; i++) {
+    //         memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
+    //         memoryCard[i].transition = "all 1.0s  ";
+    //         memoryCard[i].transform = "rotateY(180deg)";
+    //     }
+    // }, 1000);
     //MODAL END 
     info.incorrect++;
 }
