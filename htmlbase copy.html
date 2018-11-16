@@ -11,61 +11,56 @@
 </head>
 
 <style>
-    * {
+    /* * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+    } */
+
+body {
+        /* display: flex; */
+    background-image: url('./images/background2.png');
+}
+
+#memory-game {
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
     }
 
-    body {
-        /* height: 100vh; */
-        display: flex;
-        background-image: url('./images/background2.png');
-    }
-
-    #memory-game {
-        width: 600px;
-        height: 500px;
-        margin: auto;
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 50px;
-    }
-
-    .memory-card {
-        width: calc(25% - 10px);
-        height: calc(33.33320 - 10px);
-        margin: 5px;
-        position: relative;
-        box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-        background-image: url('./images/itc.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        cursor: pointer; 
-        transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
+.memory-card {
+    width: calc(25% - 10px);
+    height: calc(33.33320 - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    background-image: url('./images/itc.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer; 
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     border-radius: 10px;
     }
 
     div {
-        width: 100%;
-        object-fit: cover;
+    width: 100%;
+    object-fit: cover;
     }
 
     #title{
-        text-align:center;
-        color: white;
-        font-size: 50px;
-        margin-top: 40px;
-        background-color: rgba(0, 0, 0, 0.5);
-        position:relative;
-        font-family: 'VT323', monospace;
+    text-align:center;
+    color: white;
+    font-size: 50px;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position:relative;
+    font-family: 'VT323', monospace;
     }
 
 #newGame {
-
     border: black 1px solid;
     color: black;
     height: 100px;
@@ -81,29 +76,11 @@
     text-align:center; 
     margin-top: 40px;
 }
-#modalNewGame {
-    
-   
-    color: black;
-    height: 50px;
-    width: 200PX;
-    cursor: pointer;
-    background-color: #fafafa;
-    font-size: 25px;
-    font-family: 'VT323', monospace;
-   
-    border-radius: 5px;
-    float: right;
-   
-    margin-top: 20px;
-    border-color: darkgreen;
-    border-width: 5px;
-    border-style: dashed;
-}
     
 #container {
 text-align: center;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -126,14 +103,31 @@ text-align: center;
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
-    text-align: center;
+    font-family: sans-serif;
+    font-size: 30px;
+    display:flex;
+    align-items: center;
+}
+#modalNewGame {
+    color: black;
+    height: 50px;
+    width: 200PX;
+    cursor: pointer;
+    background-color: #fafafa;
+    font-size: 25px;
     font-family: 'VT323', monospace;
-    font-size: 50px;
-    
+    border-radius: 5px;
+    margin-top: 20px;
+    border-color: darkgreen;
+    border-width: 5px;
+    border-style: dashed;
+    background-color: lightgreen;
+
 }
 
 /* The Close Button */
 .close {
+    margin-top: 10px;
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -182,7 +176,6 @@ text-align: center;
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
-                    <!-- Modal content -->
                     <div class="modal-content" id="modalContent">
                         <div id="modalText"></div>
                         <button id="modalNewGame"> New Game </button>

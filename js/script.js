@@ -40,18 +40,15 @@ let hasFlippedCard = false;
 function assignCards(event) {
 
     if (event.target !== event.currentTarget) {
-        //when clicked
         info.clickNumber++;
+
         if (event.target === firstCard) return;
 
         cardId = event.target.getAttribute('id');
         cardId = parseInt(cardId);
-
         event.target.style.backgroundImage = array[cardId];
-
         event.target.style.transition = "all 1.0s  ";
         event.target.style.transform = "rotateY(180deg)";
-
         info.clickedItem.push(array[cardId]);
 
         if (info.clickNumber == 1) {
@@ -63,29 +60,14 @@ function assignCards(event) {
             info.div.push(event.target);
             decisionMaker();
         }
-
-        // if (!hasFlippedCard) {
-        //     hasFlippedCard = true;
-        //     firstCard = event.target;
-
-
-        //     return;
-        // }
-
     }
-    // if (info.clickNumber == 2) {
-    //     decisionMaker();
-
-    // }
     event.stopPropagation();
-    //    event.target = secondCard;
 };
 
 //MATCH OR NO MATCH
 function decisionMaker() {
     info.clickNumber = 0;
     memoryGame.removeEventListener('click', assignCards);
-
     let isMatch = info.clickedItem[0] === info.clickedItem[1];
     isMatch ? correctAnswer() : incorrectAnswer();
 }
@@ -113,30 +95,27 @@ function incorrectAnswer() {
 
 //NEWGAME
 function newGameFunction() {
+    shuffle();
     info.clickNumber = 0;
     info.clickedItem = [];
     info.div = [];
-
     for (var i = 0; i < memoryCard.length; i++) {
         memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
     }
 };
 
-
-// winner
+// Winner
 function win() {
     setTimeout(function () {
-        if (info.correct == 2) {
+        if (info.correct == 1) {
             modalText.innerHTML = "WIN ! <br> You had " + info.incorrect + " incorrect guesses. <br> ";
             modal.style.display = "block";
             modalContent.style.backgroundColor = "green";
-
             var modalNewGame = document.getElementById("modalNewGame");
             modalNewGame.onclick = function () {
                 modal.style.display = "none";
                 newGameFunction()
             };
-
             var span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
                 modal.style.display = "none";
@@ -144,15 +123,6 @@ function win() {
         }
     }, 2000);
 }
-
-
-
-
-
-//need to make it so that once two have been clicked can no longer click
-//fliping images
-// when user wins the win appears and then the match!
-//how do i take random card out the function so it can be found everywhere
 
 function shuffle() {
     for (var flips = 0; flips < array.length; flips++) {
@@ -163,14 +133,3 @@ function shuffle() {
         array[j] = temp;
     }
 }
-
-
-    // //MODAL  START
-    // modalText.innerHTML = "MATCH!";
-    // modal.style.display = "block";
-    // modalContent.style.backgroundColor = "green";
-    // var span = document.getElementsByClassName("close")[0];
-    // span.onclick = function () {
-    //     modal.style.display = "none";
-    // };
-    // //MODAL END 
