@@ -6,16 +6,19 @@ var modalContent = document.getElementById("modalContent");
 var modalText = document.getElementById("modalText");
 var newGame = document.getElementById("newGame");
 
+
 //EVENT LISTENERS
 memoryGame.addEventListener("click", assignCards);
 newGame.addEventListener("click", shuffle);
+newGame.addEventListener('click', newGameFunction);
 
 //SELECTING A CARD 
 info = {
     clickedItem: [],
     clickNumber: 0,
     correct: 0,
-    incorrect: 0
+    incorrect: 0,
+    div: []
 }
 var array = ["url('./images/cynthia.png')",
     "url('./images/laura.png')",
@@ -30,8 +33,10 @@ var array = ["url('./images/cynthia.png')",
     "url('./images/rebecca.png')",
     "url('./images/emilie.png')",
 ];
-
+let firstCard, secondCard;
+let hasFlippedCard = false;
 function assignCards(event) {
+    if (event.target === firstCard) return;
     if (event.target !== event.currentTarget) {
         //when clicked
         var cardId = event.target.getAttribute('id');
@@ -43,89 +48,91 @@ function assignCards(event) {
         event.target.style.transform = "rotateY(180deg)";
 
         info.clickedItem.push(array[cardId]);
-        info.clickNumber++;
 
-        if (info.clickNumber == 2 ) {
-            decisionMaker();
-        }
+
+        info.clickNumber++;
+        firstCard = event.target;
+        // if (!hasFlippedCard) {
+        //     hasFlippedCard = true;
+        //     firstCard = event.target;
+        info.div.push(event.target);
+
+        //     return;
+        // }
+
     }
-    e.stopPropagation();
+    if (info.clickNumber == 2) {
+        decisionMaker();
+        secondCard = event.target;
+        info.div.push(firstCard);
+
+    }
+    event.stopPropagation();
+    //    event.target = secondCard;
 };
 
 //MATCH OR NO MATCH
 function decisionMaker() {
-    setTimeout(function () {
-        if (info.clickedItem[0] === info.clickedItem[1]) {
-            correctAnswer();
-        }
+    info.clickNumber = 0;
+    memoryGame.removeEventListener('click', assignCards);
 
-        else {
-            incorrectAnswer();
-        };
-
-        //continue game
-        info.clickNumber = 0;
-        info.clickedItem = [];
-
-    }, 1000);
+    let isMatch = info.clickedItem[0] === info.clickedItem[1];
+    isMatch ? correctAnswer() : incorrectAnswer();
 }
 
 // CORRECT ANSWER
 function correctAnswer() {
     info.correct++;
-    // RANDOM CARD NOT FOUND !!!!!!!!!!!!!!!!!!!!
-    // info.clickedItem.slice();
-
-    //MODAL  START
-    modalText.innerHTML = "MATCH!";
-    modal.style.display = "block";
-    modalContent.style.backgroundColor = "green";
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function () {
-        modal.style.display = "none";
-    };
-    //MODAL END 
+    info.clickedItem = [];
+    info.div = [];
+    memoryGame.addEventListener("click", assignCards);
     win();
 }
 
 //INCORRECT ANSWER
 function incorrectAnswer() {
-    //MODAL  START
-    // modalText.innerHTML = "NO MATCH!";
-    // modal.style.display = "block";
-    // modalContent.style.backgroundColor = "red";
-    // var span = document.getElementsByClassName("close")[0];
-    // // When the user clicks on <span> (x), close the modal
-    // span.onclick = function () {
-    //     modal.style.display = "none";
-    // }
-
-    setTimeout(function () {
-        for (var i = 0; i < memoryCard.length; i++) {
-            memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
-            memoryCard[i].transition = "all 1.0s  ";
-            memoryCard[i].transform = "rotateY(180deg)";
-        }
-    }, 1000);
-    //MODAL END 
     info.incorrect++;
+    setTimeout(function () {
+        info.div[0].style.backgroundImage = "url('./images/itc.png')";
+        info.div[1].style.backgroundImage = "url('./images/itc.png')";
+        info.clickedItem = [];
+        info.div = [];
+        memoryGame.addEventListener("click", assignCards);
+    }, 2000);
 }
 
-
 //NEWGAME
-document.getElementById("newGame").addEventListener('click', function () {
+function newGameFunction() {
     info.clickNumber = 0;
     info.clickedItem = [];
+    info.div = [];
+
     for (var i = 0; i < memoryCard.length; i++) {
         memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
     }
-});
+};
+
 
 // winner
 function win() {
-    if (info.correct == 2) {
-        alert("winner you have " + info.incorrect + " incorrect guesses")
+    setTimeout(function () {
+    if (info.correct == 1) {
+        modalText.innerHTML = "WIN ! <br> You had " + info.incorrect + " incorrect guesses. <br> ";
+        modal.style.display = "block";
+        modalContent.style.backgroundColor = "green";
+
+        var modalNewGame = document.getElementById("modalNewGame");
+        modalNewGame.onclick = function () {
+            modal.style.display = "none";
+            newGameFunction()
+        };
+
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
     }
+}, 2000);
 }
 
 
@@ -146,3 +153,14 @@ function shuffle() {
         array[j] = temp;
     }
 }
+
+
+    // //MODAL  START
+    // modalText.innerHTML = "MATCH!";
+    // modal.style.display = "block";
+    // modalContent.style.backgroundColor = "green";
+    // var span = document.getElementsByClassName("close")[0];
+    // span.onclick = function () {
+    //     modal.style.display = "none";
+    // };
+    // //MODAL END 
