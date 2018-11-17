@@ -1,7 +1,6 @@
 body {
     display: flex;
     background-image: url('../images/background2.png');
-   
 }
 
 #memory-game {
@@ -18,13 +17,12 @@ body {
     height: calc(33.33320 - 10px);
     margin: 5px;
     position: relative;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-    background-image: url('../images/itc.png');
+    background-image: url('../images/itc.png') ;
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer; 
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-    border-radius: 10px;
+    border-radius: 10px;    
     }
 
 div {
@@ -62,7 +60,6 @@ div {
     text-align: center;
 }
 
-/* The Modal (background) */
 .modal {
     display: none; 
     position: fixed; 

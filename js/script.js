@@ -6,13 +6,6 @@ var modalContent = document.getElementById("modalContent");
 var modalText = document.getElementById("modalText");
 var newGame = document.getElementById("newGame");
 
-
-//EVENT LISTENERS
-memoryGame.addEventListener("click", assignCards);
-newGame.addEventListener("click", shuffle);
-newGame.addEventListener('click', newGameFunction);
-
-//SELECTING A CARD 
 info = {
     clickedItem: [],
     clickNumber: 0,
@@ -37,6 +30,8 @@ var cardId;
 var firstCard;
 var secondCard;
 let hasFlippedCard = false;
+
+//SELECT CARD
 function assignCards(event) {
 
     if (event.target !== event.currentTarget) {
@@ -48,7 +43,8 @@ function assignCards(event) {
         cardId = parseInt(cardId);
         event.target.style.backgroundImage = array[cardId];
         event.target.style.transition = "all 1.0s  ";
-        event.target.style.transform = "rotateY(180deg)";
+        event.target.style.transform = "rotateY(360deg)";
+
         info.clickedItem.push(array[cardId]);
 
         if (info.clickNumber == 1) {
@@ -106,7 +102,7 @@ function newGameFunction() {
     }
 };
 
-// Winner
+//WINNER
 function win() {
     setTimeout(function () {
         if (info.correct == 6) {
@@ -126,6 +122,7 @@ function win() {
     }, 2000);
 }
 
+//SHUFFLE 
 function shuffle() {
     for (var flips = 0; flips < array.length; flips++) {
         var i = Math.floor(Math.random() * array.length);
@@ -135,3 +132,8 @@ function shuffle() {
         array[j] = temp;
     }
 }
+
+//EVENT LISTENERS
+memoryGame.addEventListener("click", assignCards);
+newGame.addEventListener("click", shuffle);
+newGame.addEventListener('click', newGameFunction);
