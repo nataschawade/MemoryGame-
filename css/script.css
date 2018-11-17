@@ -1,67 +1,128 @@
-.body { 
-    padding: 100px; 
-    background-image: url("../images/background.jpg"); 
-    color: #fafafa;
+body {
+    display: flex;
+    background-image: url('./images/background2.png');
+   
 }
 
-.text-align { 
-    text-align: center;
-}
+#memory-game {
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    }
 
-#quiz { 
-    background-color:#580000 ;
-    padding: 30px;
-    border-radius: 20px;
-}
+.memory-card {
+    width: calc(25% - 10px);
+    height: calc(33.33320 - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    background-image: url('./images/itc.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer; 
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    border-radius: 10px;
+    }
 
-.round-border {
-    border-radius: 5px;
-    border:none;
-    padding:5px;
-}
+div {
+    width: 100%;
+    object-fit: cover;
+    }
 
-#picture {
-    width: 500px;
-    border-radius:10px;
-}
-
-#button {
-    background-color: #f4511e;
-    border: none;
+#title{
+    text-align:center;
     color: white;
-    padding: 16px 32px;
+    font-size: 50px;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position:relative;
+    font-family: 'VT323', monospace;
+    }
+
+#newGame {
+    border: black 1px solid;
+    height: 100px;
+    width: 300px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 50px;
+    border-radius: 30px;
+    border-width: 5px;
+    border-style: ridge;
+    text-align:center; 
+    margin-top: 40px;
+}
+    
+#container {
     text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-    opacity: 0.6;
-    transition: 0.3s;
-    display: inline-block;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.7); 
+    text-align:center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+    font-family: sans-serif;
+    font-size: 30px;
+    display:flex;
+    align-items: center;
+}
+
+#modalNewGame {
+    color: black;
+    height: 50px;
+    width: 200PX;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: 'VT323', monospace;
+    border-radius: 5px;
+    margin-top: 20px;
+    border-color: darkgreen;
+    border-width: 5px;
+    border-style: dashed;
+    background-color: lightgreen;
+
+}
+
+.close {
+    margin-top: 10px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
     text-decoration: none;
     cursor: pointer;
-    margin-top:60px;
-  }
-  
-#button:hover {
-    opacity: 1;
-    cursor: pointer; 
 }
 
- .color-button {
-    border: 0px;
-    width: 200px;
-    padding: 0px;
-    cursor: pointer;
+@media screen and (max-width: 600px) {
+#memory-game {
+    width: 300px;
+    height: 250px;
 }
-
-#after-submit {
-    visibility:hidden; 
-    padding: 10px 20px 10px 20px;
-    position: absolute; 
-    top: 10px;
-    width: 80%;
-    font-size: 40px;
-}
-
-#message {
-    padding-bottom: 0px;
 }

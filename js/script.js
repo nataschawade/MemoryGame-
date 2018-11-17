@@ -98,6 +98,8 @@ function newGameFunction() {
     shuffle();
     info.clickNumber = 0;
     info.clickedItem = [];
+    info.correct= 0;
+    info.incorrect= 0
     info.div = [];
     for (var i = 0; i < memoryCard.length; i++) {
         memoryCard[i].style.backgroundImage = "url('./images/itc.png')";
@@ -107,7 +109,7 @@ function newGameFunction() {
 // Winner
 function win() {
     setTimeout(function () {
-        if (info.correct == 1) {
+        if (info.correct == 6) {
             modalText.innerHTML = "WIN ! <br> You had " + info.incorrect + " incorrect guesses. <br> ";
             modal.style.display = "block";
             modalContent.style.backgroundColor = "green";
